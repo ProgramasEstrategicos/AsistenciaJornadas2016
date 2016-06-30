@@ -48,8 +48,4 @@ public class Administrador {
     public boolean actualizarAsistente(String nombre, String dia){
         return asis.actualizarAsistente(nombre, dia);
     }
-    
-    public static void main(String[] args){
-        Administrador a = new Administrador();
-    }
 }
