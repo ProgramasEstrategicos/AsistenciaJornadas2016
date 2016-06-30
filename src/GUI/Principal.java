@@ -5,6 +5,7 @@ import lógica.Administrador;
 
 /**
  * @author Max Emmanuel Sierra Gómez
+ * @version 1.0.0
  */
 public class Principal extends javax.swing.JFrame {
 
@@ -91,11 +92,19 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para abrir la ventana que sirve para crear un nuevo asistente
+     * @param evt 
+     */
     private void btn_nuevoAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoAsistenteActionPerformed
         this.setVisible(false);
         new NuevaAsistencia().setVisible(true);
     }//GEN-LAST:event_btn_nuevoAsistenteActionPerformed
 
+    /**
+     * Botón para abrir la ventana que asignará una nueva asistencia a un asistente ya creado
+     * @param evt 
+     */
     private void btn_asignarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asignarAsistenciaActionPerformed
         this.setVisible(false);
         if(admin.existenciaAsistentes()){
