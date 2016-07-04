@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import lógica.Administrador;
 
 /**
+ * Ventana principal de la aplicación
  * @author Max Emmanuel Sierra Gómez
  * @version 1.0.0
  */

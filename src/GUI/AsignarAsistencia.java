@@ -5,11 +5,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import lógica.Administrador;
-//import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
+ * Ventana para asignar una asistencia a una persona ya registrada.
  * @author Max Emmanuel Sierra Gómez
+ * @version 1.0.0
  */
 public class AsignarAsistencia extends javax.swing.JFrame {
     
@@ -17,20 +18,27 @@ public class AsignarAsistencia extends javax.swing.JFrame {
     private Administrador admin;
 
     /**
-     * Creates new form AsignarAsistencia
+     * Creates new form AsignarAsistencia.
      */
     public AsignarAsistencia() {
         initComponents();
         this.asisDAO = new AsistenteDAO();
         admin = new Administrador();
+        this.autocompletar();
+        this.setDia();
+    }
+
+    /**
+     * Método para volver autocompletable el combobox de los nombres de los asistentes
+     */
+    public void autocompletar(){
         this.cbx_nombreAsistente.removeAllItems();
         String linea = this.asisDAO.obtenerLista();
         String[] nombres = linea.split("\\|");
         this.cbx_nombreAsistente.setModel(new javax.swing.DefaultComboBoxModel(nombres));
         AutoCompleteDecorator.decorate(this.cbx_nombreAsistente);
-        this.setDia();
-    }
-
+      }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,8 +162,6 @@ public class AsignarAsistencia extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelarAsignarAsistenciaActionPerformed
 
     private void btn_asignarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asignarAsistenciaActionPerformed
-//        String nombre = (String) this.cbx_nombreAsistente.getSelectedItem();
-//        String dia = (String) this.cbx_diasAsistencia.getSelectedItem();
         if(admin.actualizarAsistente((String) this.cbx_nombreAsistente.getSelectedItem(), (String) this.cbx_diasAsistencia.getSelectedItem())){
             JOptionPane.showMessageDialog(null,"Asistencia asignada exitosamente.");
         }else{
@@ -165,6 +171,9 @@ public class AsignarAsistencia extends javax.swing.JFrame {
         new Principal().setVisible(true);
     }//GEN-LAST:event_btn_asignarAsistenciaActionPerformed
 
+    /**
+     * Método para poner el día actual en el combo box.
+     */
     private void setDia(){
         Calendar calendario = new GregorianCalendar();
         System.out.println(calendario.get(Calendar.DAY_OF_WEEK));

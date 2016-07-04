@@ -7,8 +7,9 @@ import javax.swing.JOptionPane;
 import lógica.Administrador;
 
 /**
+ * Clase que abre una ventana para capturar un nuevo asistente
  * @author Max Emmanuel Sierra Gómez
- * @version
+ * @version 1.0.0
  */
 public class NuevaAsistencia extends javax.swing.JFrame {
 
@@ -18,6 +19,7 @@ public class NuevaAsistencia extends javax.swing.JFrame {
     
     private AsistenteBean asis;
     private Administrador admin;
+    //Variable para definir el patrón de la forma de un correo electrónico
     private static final String PATTERN_EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     
@@ -71,43 +73,9 @@ public class NuevaAsistencia extends javax.swing.JFrame {
         lbl_email.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         lbl_email.setText("Correo electrónico:");
 
-        txt_nombreAsistente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreAsistenteActionPerformed(evt);
-            }
-        });
-
-        txt_dondeSeEntero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_dondeSeEnteroActionPerformed(evt);
-            }
-        });
-
-        txt_edadAsistente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_edadAsistenteActionPerformed(evt);
-            }
-        });
         txt_edadAsistente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_edadAsistenteKeyTyped(evt);
-            }
-        });
-
-        txt_adscripcionAsistente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_adscripcionAsistenteActionPerformed(evt);
-            }
-        });
-
-        txt_emailAsistente.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_emailAsistenteFocusLost(evt);
-            }
-        });
-        txt_emailAsistente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_emailAsistenteActionPerformed(evt);
             }
         });
 
@@ -222,6 +190,10 @@ public class NuevaAsistencia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método para guardar en base de datos un nuevo asistente
+     * @param evt 
+     */
     private void btn_guardarAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarAsistenteActionPerformed
         if(this.validarCampos()){
             this.asis.setNombre(txt_nombreAsistente.getText());
@@ -242,39 +214,15 @@ public class NuevaAsistencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_guardarAsistenteActionPerformed
 
-    private void txt_nombreAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreAsistenteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreAsistenteActionPerformed
-
-    private void txt_dondeSeEnteroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dondeSeEnteroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_dondeSeEnteroActionPerformed
-
-    private void txt_edadAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_edadAsistenteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_edadAsistenteActionPerformed
-
-    private void txt_adscripcionAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adscripcionAsistenteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_adscripcionAsistenteActionPerformed
-
-    private void txt_emailAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailAsistenteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_emailAsistenteActionPerformed
-
     private void btn_cancelarAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarAsistenteActionPerformed
         this.setVisible(false);
         new Principal().setVisible(true);
     }//GEN-LAST:event_btn_cancelarAsistenteActionPerformed
 
-    private void txt_emailAsistenteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailAsistenteFocusLost
-//        if(this.txt_emailAsistente.getText().equals("")){
-//            JOptionPane.showMessageDialog(null,"Favor de escribir un email.");
-//        }else{
-//            JOptionPane.showMessageDialog(null,"Email escrito.");
-//        }
-    }//GEN-LAST:event_txt_emailAsistenteFocusLost
-
+    /**
+     * Método que valida si ingresaste un caracter no númerico en el campo de edad
+     * @param evt 
+     */
     private void txt_edadAsistenteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_edadAsistenteKeyTyped
         char c = evt.getKeyChar();
         if(!Character.isDigit(c)){
@@ -284,6 +232,12 @@ public class NuevaAsistencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_edadAsistenteKeyTyped
 
+    /**
+     * Método que valida si, al momento de intentar guardar un nuevo asistente,
+     * hay algún campo vacío.
+     * @return verdadero si no hay campos vacíos y falso si hay algún campo vacío o si
+     * el correo electrónico está escrito de manera incorrecta.
+     */
     private boolean validarCampos(){
         boolean exito = true;
         if(this.txt_nombreAsistente.getText().equals("")){
@@ -324,12 +278,18 @@ public class NuevaAsistencia extends javax.swing.JFrame {
         return exito;
     }
     
+    /**
+     * Método para validar si un email está escrito de manera correcta.
+     * @param email para validar
+     * @return verdadero si el email está correctamente escrito y falso si no es así.
+     */
     private boolean validarEmail(String email){
-        // Compiles the given regular expression into a pattern.
-		Pattern pattern = Pattern.compile(PATTERN_EMAIL);
-		// Match the given input against this pattern
-		Matcher matcher = pattern.matcher(email);
-		return matcher.matches();
+        // Compiles the given regular expression into a pattern. La variable PATTER_EMAIL que guarda una expresión regular
+        // es compilada para convertirse en un patrón.
+	Pattern pattern = Pattern.compile(PATTERN_EMAIL);
+        // Match the given input against this pattern. Compara la cadena introducida con el patrón.
+	Matcher matcher = pattern.matcher(email);
+	return matcher.matches();
     }
     
     /**
