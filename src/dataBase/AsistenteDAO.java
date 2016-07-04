@@ -8,8 +8,10 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import lógica.Administrador;
 
-/*
- * @author Max Sierra
+/**
+ * Clase que extiende de GeneralDAO para realizar los querys a la base de datos.
+ * @author Max Emmanuel Sierra Gómez
+ * @version 1.0.0
  */
 public class AsistenteDAO extends GeneralDAO{
     
@@ -27,6 +29,12 @@ public class AsistenteDAO extends GeneralDAO{
         super();
     }
     
+    /**
+     * Método para agregar un elemento asistente a la tabla Asistente en la base de datos.
+     * @param asistente: un objeto tipo AsistenteBean.
+     * @param dias: inicializa el día en que asistió por primera vez.
+     * @return verdadero si se realizó la inserción y falso si hubo algún error.
+     */
     public boolean agregarAsistente(AsistenteBean asistente, boolean[] dias){
         boolean exito = true;
         try{
@@ -51,6 +59,12 @@ public class AsistenteDAO extends GeneralDAO{
         return exito;
     }
     
+    /**
+     * Método para actualizar la asistencia de un elemento de la tabla Asistente.
+     * @param nombre: el nombre del asistente al cual se le actualizará su asistencia.
+     * @param dia: día de asistencia
+     * @return verdadero si se realizó la actualización y falso si hubo algún error.
+     */
     public boolean actualizarAsistente(String nombre, String dia){
         boolean exito = false;
         query = createQueryUpdate(nombre,dia);
@@ -65,11 +79,21 @@ public class AsistenteDAO extends GeneralDAO{
         return exito;
     }
     
+    /**
+     * Método para crear el query de actualización.
+     * @param nom: nombre del asistente.
+     * @param dia: día de la asistencia.
+     * @return una cadena que contiene la sentencia query "UPDATE" a ejecutar.
+     */
     private String createQueryUpdate(String nom, String dia){
         String strUpdt = "UPDATE asistente SET " + dia + "= 1 where nombre = '" + nom + "'";
         return strUpdt;
     }
     
+    /**
+     * Método que realiza una consulta de los nombres de los asistentes registrados.
+     * @return nom: String con los nombres de todos los asistentes separados por "|".
+     */
     public String obtenerLista(){
         nom = "";
         try{
@@ -86,12 +110,5 @@ public class AsistenteDAO extends GeneralDAO{
                 JOptionPane.showMessageDialog(null, exc.getMessage());
             }
         return nom;
-    }
-    
-    public static void main(String[] args){
-        AsistenteBean asis = new AsistenteBean("María Gómez2",76,"SEP","Familia","mariadelsocorro@gomez.jimenez",1);
-        AsistenteDAO asisDAO = new AsistenteDAO();
-        Administrador admin = new Administrador();
-        System.out.println(asisDAO.obtenerLista());
     }
 }

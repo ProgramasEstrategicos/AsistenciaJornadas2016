@@ -3,7 +3,14 @@ package dataBase;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 
+/**
+ * Clase base abstracta que sirve de interfaz para la conexión de la aplicación con base de datos MySQL.
+ * @author Max Emmanuel Sierra Gómez
+ * @version 1.0.0
+ * @param <T> 
+ */
 public abstract class GeneralDAO<T> {
     
     private static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -18,33 +25,37 @@ public abstract class GeneralDAO<T> {
         establishConnection();
    }
 
+    /**
+     * Método que establece conexión con la base de datos.
+     */
     public void establishConnection(){
         connection = null;
         try{
             connection = DriverManager.getConnection(DATABASE_URL,user,password);
         }catch(SQLException sqlException){
-            //sqlException.printStackTrace();
-            System.out.println(sqlException.getMessage());
+            JOptionPane.showMessageDialog(null,sqlException.getMessage());
         }
     }
 
+    /**
+     * Método que carga el driver.
+     */
     public void loadDriver(){
         try {
                 Class.forName(DRIVER);
         } catch (Exception e) {
-            //e.printStackTrace();
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 
+    /**
+     * Método para cerrar la conexión a la base de datos.
+     */
     public void closeConnection(){
         try{
             connection.close();
         }catch(SQLException sqlException){
-            //sqlException.printStackTrace();
-            System.out.println(sqlException.getMessage());
+            JOptionPane.showMessageDialog(null,sqlException.getMessage());
         }
     }
-    
-
 }

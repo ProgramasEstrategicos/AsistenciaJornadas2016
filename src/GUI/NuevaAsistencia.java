@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import lógica.Administrador;
 
 /**
- * Clase que abre una ventana para capturar un nuevo asistente
+ * Clase que abre una ventana para capturar un nuevo asistente.
  * @author Max Emmanuel Sierra Gómez
  * @version 1.0.0
  */

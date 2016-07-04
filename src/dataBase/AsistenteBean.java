@@ -3,7 +3,9 @@ package dataBase;
 import java.io.Serializable;
 
 /**
- * @author Max Sierra
+ * Bean de los datos personales de un asistente.
+ * @author Max Emmanuel Sierra Gómez
+ * @version 1.0.0
  */
 public class AsistenteBean implements Serializable{
     
