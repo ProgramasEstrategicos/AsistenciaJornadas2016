@@ -10,6 +10,7 @@ import lógica.Administrador;
  * Clase que abre una ventana para capturar un nuevo asistente.
  * @author Max Emmanuel Sierra Gómez
  * @version 1.0.0
+ * Última fecha de actualización: 04/07/2016
  */
 public class NuevaAsistencia extends javax.swing.JFrame {
 

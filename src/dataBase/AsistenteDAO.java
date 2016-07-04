@@ -6,12 +6,12 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import lógica.Administrador;
 
 /**
  * Clase que extiende de GeneralDAO para realizar los querys a la base de datos.
  * @author Max Emmanuel Sierra Gómez
  * @version 1.0.0
+ * Última fecha de actualización: 04/07/2016
  */
 public class AsistenteDAO extends GeneralDAO{
     

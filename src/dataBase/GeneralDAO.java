@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
  * @author Max Emmanuel Sierra Gómez
  * @version 1.0.0
  * @param <T> 
+ * Última fecha de actualización: 04/07/2016
  */
 public abstract class GeneralDAO<T> {
     

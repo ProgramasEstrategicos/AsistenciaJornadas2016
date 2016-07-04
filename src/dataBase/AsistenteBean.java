@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Bean de los datos personales de un asistente.
  * @author Max Emmanuel Sierra Gómez
  * @version 1.0.0
+ * Última fecha de actualización: 04/07/2016
  */
 public class AsistenteBean implements Serializable{
     

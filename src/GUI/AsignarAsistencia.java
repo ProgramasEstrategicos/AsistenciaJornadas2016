@@ -11,6 +11,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  * Ventana para asignar una asistencia a una persona ya registrada.
  * @author Max Emmanuel Sierra Gómez
  * @version 1.0.0
+ * Última fecha de actualización: 04/07/2016
  */
 public class AsignarAsistencia extends javax.swing.JFrame {
     
