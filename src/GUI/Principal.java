@@ -1,3 +1,6 @@
+/**
+ * Paquete de las interfaces gráficas.
+ */
 package GUI;
 
 import javax.swing.JOptionPane;
